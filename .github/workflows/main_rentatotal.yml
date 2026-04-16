@@ -66,5 +66,5 @@ jobs:
         with:
           app-name: 'rentatotal'
           slot-name: 'Production'
-          package: ./public
+          package: .
           
