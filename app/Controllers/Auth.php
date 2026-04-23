@@ -66,11 +66,7 @@ class Auth extends BaseController
                     'isLoggedIn'  => true
                 ]);
 
-                return redirect()->to(
-    $user['rol'] === 'admin'
-        ? site_url('dashboarda')
-        : site_url('dashboard')
-);        
+                return redirect()->to($user['rol'] === 'admin' ? '/dashboarda' : '/dashboard');        
 
             } else {
                 // LOGIN FALLIDO: Incrementar contador
