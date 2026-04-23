@@ -65,6 +65,6 @@ jobs:
         id: deploy-to-webapp
         with:
           app-name: 'mirentatotal'
-          slot-name: 'Production'
+          slot-name: 'development'
           package: .
           
