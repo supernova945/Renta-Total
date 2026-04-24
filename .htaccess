@@ -1,7 +1,10 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     
-    # Si el archivo existe en public, búscalo ahí
-    RewriteCond %{REQUEST_URI} !^/public/
-    RewriteRule ^(.*)$ public/$1 [L]
+    # 1. Si la petición ya viene para public, no hagas nada
+    RewriteCond %{REQUEST_URI} ^/public/ [NC]
+    RewriteRule ^ - [L]
+
+    # 2. Redirige todo lo demás a public/index.php
+    RewriteRule ^(.*)$ public/index.php/$1 [L,QSA]
 </IfModule>
