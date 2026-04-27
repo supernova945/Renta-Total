@@ -51,7 +51,7 @@ class Auth extends BaseController
             }
 
             // 4. Verificar la contraseña
-            if (password_verify($password, $user['Password'])) {
+            if (password_verify($password, $user['password'])) {
                 
                 // LOGIN EXITOSO: Resetear intentos
                 if ($user['intentos_fallidos'] > 0) {
