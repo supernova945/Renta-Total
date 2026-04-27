@@ -73,7 +73,7 @@ class Dashboard extends BaseController
         $data = [
         'title'             => 'Panel de Administrador',
         'current_date'      => date('d/m/Y'),
-        'logged_in_user_id' => $session->get('idUsuario'),
+        'logged_in_user_id' => $session->get('idusuario'),
         'stats'             => $this->getDashboardStats(),
         'recent_activities' => $this->activityLogModel->getRecentActivities(20),
         'marca'             => $marcaModel->findAll(),
@@ -332,7 +332,7 @@ class Dashboard extends BaseController
             return $this->response->setJSON(['count' => 0])->setStatusCode(401);
         }
 
-        $userId = $session->get('idUsuario');
+        $userId = $session->get('idusuario');
         $count = $this->notificationService->getUserNotificationCount($userId);
 
         return $this->response->setJSON(['count' => $count])->setStatusCode(200);
@@ -349,7 +349,7 @@ class Dashboard extends BaseController
             return $this->response->setJSON([])->setStatusCode(401);
         }
 
-        $userId = $session->get('idUsuario');
+        $userId = $session->get('idusuario');
         $limit = $this->request->getGet('limit') ?: 50;
 
         $notifications = $this->notificationService->getUserNotifications($userId, $limit, false);
@@ -381,7 +381,7 @@ class Dashboard extends BaseController
             return $this->response->setJSON(['success' => false, 'message' => 'No autorizado'])->setStatusCode(401);
         }
 
-        $userId = $session->get('idUsuario');
+        $userId = $session->get('idusuario');
 
         try {
             $result = $this->notificationService->markNotificationAsRead($notificationId, $userId);
@@ -408,7 +408,7 @@ class Dashboard extends BaseController
             return $this->response->setJSON(['success' => false, 'message' => 'No autorizado'])->setStatusCode(401);
         }
 
-        $userId = $session->get('idUsuario');
+        $userId = $session->get('idusuario');
 
         try {
             $result = $this->notificationService->markAllNotificationsAsRead($userId);
