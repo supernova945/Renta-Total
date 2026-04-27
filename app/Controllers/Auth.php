@@ -50,7 +50,7 @@ class Auth extends BaseController
                 return redirect()->back()->with('error', 'Esta cuenta está bloqueada. Contacta al administrador.');
             }
 
-            // 4. Verificar la contraseña
+            // 4. Verificar la contraseñacas
             if (password_verify($password, $user['password'])) {
                 
                 // LOGIN EXITOSO: Resetear intentos
