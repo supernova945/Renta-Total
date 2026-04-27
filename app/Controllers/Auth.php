@@ -75,7 +75,7 @@ class Auth extends BaseController
 
                 // Si llega al límite de 4 intentos, cambiar estado a 0 (inactivo)
                 if ($nuevosIntentos >= 4) {
-                    $updateData['estado'] = 0; // Guardamos 0 para inactivo
+                    $updateData['estado'] = '0'; // Guardamos 0 para inactivo
                     $usuarioModel->update($user['idUsuario'], $updateData);
                     return redirect()->back()->with('error', 'Has fallado 4 intentos. Tu cuenta ha sido desactivada por seguridad.');
                 }
