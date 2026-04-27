@@ -14,7 +14,7 @@ class ClienteModel extends Model
     }
 
     protected $table = 'cliente';
-    protected $primaryKey = 'idCliente';
+    protected $primaryKey = 'idcliente';
 
     protected $useAutoIncrement = true;
 
