@@ -51,16 +51,16 @@ class Auth extends BaseController
             }
 
             // 4. Verificar la contraseñacas
-            if (password_verify($password, $user['Password'])) {
+            if (password_verify($password, $user['password'])) {
                 
                 // LOGIN EXITOSO: Resetear intentos
                 if ($user['intentos_fallidos'] > 0) {
-                    $usuarioModel->update($user['idUsuario'], ['intentos_fallidos' => 0]);
+                    $usuarioModel->update($user['idusuario'], ['intentos_fallidos' => 0]);
                 }
 
                 // Establecer datos de sesión
                 $session->set([
-                    'idusuario'   => $user['idUsuario'],
+                    'idusuario'   => $user['idusuario'],
                     'nombre'      => $user['nombre'],
                     'rol'         => $user['rol'],
                     'isLoggedIn'  => true
@@ -76,11 +76,11 @@ class Auth extends BaseController
                 // Si llega al límite de 4 intentos, cambiar estado a 0 (inactivo)
                 if ($nuevosIntentos >= 4) {
                     $updateData['estado'] = '0'; // Guardamos 0 para inactivo
-                    $usuarioModel->update($user['idUsuario'], $updateData);
+                    $usuarioModel->update($user['idusuario'], $updateData);
                     return redirect()->back()->with('error', 'Has fallado 4 intentos. Tu cuenta ha sido desactivada por seguridad.');
                 }
 
-                $usuarioModel->update($user['idUsuario'], $updateData);
+                $usuarioModel->update($user['idusuario'], $updateData);
                 $restantes = 4 - $nuevosIntentos;
                 
                 return redirect()->back()->with('error', "Contraseña incorrecta. Te quedan $restantes intentos.");
