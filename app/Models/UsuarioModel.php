@@ -14,7 +14,7 @@ class UsuarioModel extends Model
     }
 
     protected $table = 'usuario';
-    protected $primaryKey = 'idusuario';
-    protected $allowedFields = ['nombre', 'user', 'password', 'correo', 'estado', 'rol', 'dui', 'intentos_fallidos'];
+    protected $primaryKey = 'idUsuario';
+    protected $allowedFields = ['nombre', 'user', 'Password', 'correo', 'estado', 'rol', 'dui', 'intentos_fallidos'];
     protected $useTimestamps = true;
 }
