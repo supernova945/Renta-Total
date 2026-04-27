@@ -55,7 +55,7 @@ class Auth extends BaseController
                 
                 // LOGIN EXITOSO: Resetear intentos
                 if ($user['intentos_fallidos'] > 0) {
-                    $usuarioModel->update($user['idUsuario'], ['intentos_fallidos' => 0]);
+                    $usuarioModel->update($user['idusuario'], ['intentos_fallidos' => 0]);
                 }
 
                 // Establecer datos de sesión
