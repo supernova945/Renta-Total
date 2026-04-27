@@ -80,7 +80,7 @@ class Auth extends BaseController
                     return redirect()->back()->with('error', 'Has fallado 4 intentos. Tu cuenta ha sido desactivada por seguridad.');
                 }
 
-                $usuarioModel->update($user['idUsuario'], $updateData);
+                $usuarioModel->update($user['idusuario'], $updateData);
                 $restantes = 4 - $nuevosIntentos;
                 
                 return redirect()->back()->with('error', "Contraseña incorrecta. Te quedan $restantes intentos.");
