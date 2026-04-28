@@ -22,19 +22,19 @@ class RentaModel extends Model
         'idestado',
         'idcliente',
         'chasis',
-        'Motor',
+        'motor',
         'idmarca',
         'año',
         'modelo',
         'color',
         'fecha_entrega',
         'fecha_renovacion',
-        'Envio',
+        'envio',
         'taller',
         'iddepartamento',
         'idagencia',
-        'renta_sinIva',
-        'renta_conIva',
+        'renta_siniva',
+        'renta_coniva',
         'naf',
         'modificado_por'
     ];
@@ -47,8 +47,8 @@ class RentaModel extends Model
         'idcliente' => 'permit_empty|integer',
         'fecha_entrega' => 'permit_empty|valid_date',
         'fecha_renovacion' => 'permit_empty|valid_date',
-        'renta_sinIva' => 'permit_empty|decimal',
-        'renta_conIva' => 'permit_empty|decimal',
+        'renta_siniva' => 'permit_empty|decimal',
+        'renta_coniva' => 'permit_empty|decimal',
         'modificado_por' => 'required|integer'
     ];
 
@@ -86,7 +86,7 @@ class RentaModel extends Model
      */
     public function getActiveRentals()
     {
-        return $this->select('motos.*, cliente.Cliente as nombre_cliente, marca.marca as nombre_marca, estado.estado as nombre_estado, agencia.agencia as nombre_agencia')
+        return $this->select('motos.*, cliente.cliente as nombre_cliente, marca.marca as nombre_marca, estado.estado as nombre_estado, agencia.agencia as nombre_agencia')
                     ->join('cliente', 'cliente.idCliente = motos.idcliente', 'left')
                     ->join('marca', 'marca.idmarca = motos.idmarca', 'left')
                     ->join('estado', 'estado.idestado = motos.idestado', 'left')
@@ -113,8 +113,8 @@ class RentaModel extends Model
      */
     public function getRentalDetails($placa)
     {
-        return $this->select('motos.*, cliente.Cliente as nombre_cliente, marca.marca as nombre_marca, estado.estado as nombre_estado, agencia.agencia as nombre_agencia')
-                    ->join('cliente', 'cliente.idCliente = motos.idcliente', 'left')
+        return $this->select('motos.*, cliente.cliente as nombre_cliente, marca.marca as nombre_marca, estado.estado as nombre_estado, agencia.agencia as nombre_agencia')
+                    ->join('cliente', 'cliente.idcliente = motos.idcliente', 'left')
                     ->join('marca', 'marca.idmarca = motos.idmarca', 'left')
                     ->join('estado', 'estado.idestado = motos.idestado', 'left')
                     ->join('agencia', 'agencia.idagencia = motos.idagencia', 'left')
@@ -212,8 +212,8 @@ class RentaModel extends Model
         $currentDate = date('Y-m-d');
         $futureDate = date('Y-m-d', strtotime("+{$daysAhead} days"));
 
-        return $this->select('motos.*, cliente.Cliente as nombre_cliente, marca.marca as nombre_marca, estado.estado as nombre_estado, agencia.agencia as nombre_agencia')
-                    ->join('cliente', 'cliente.idCliente = motos.idcliente', 'left')
+        return $this->select('motos.*, cliente.cliente as nombre_cliente, marca.marca as nombre_marca, estado.estado as nombre_estado, agencia.agencia as nombre_agencia')
+                    ->join('cliente', 'cliente.idcliente = motos.idcliente', 'left')
                     ->join('marca', 'marca.idmarca = motos.idmarca', 'left')
                     ->join('estado', 'estado.idestado = motos.idestado', 'left')
                     ->join('agencia', 'agencia.idagencia = motos.idagencia', 'left')

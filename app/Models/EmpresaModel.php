@@ -22,7 +22,7 @@ class EmpresaModel extends Model
     protected $useSoftDeletes = false;
 
     protected $allowedFields = [
-        'Empresa',
+        'empresa',
         'direccion',
         'telefono',
         'correo',
@@ -36,7 +36,7 @@ class EmpresaModel extends Model
     protected $validationRules = [];
 
     protected $validationMessages = [
-        'Empresa' => [
+        'empresa' => [
             'required' => 'El nombre de la empresa es requerido.',
             'max_length' => 'El nombre de la empresa no puede exceder 50 caracteres.',
             'is_unique' => 'Esta empresa ya existe en el sistema.'

@@ -46,7 +46,7 @@ class Dashboard extends BaseController
         $rol = $session->get('rol');
 
         // Obtener el ID del usuario desde la sesión y sus datos desde la BD
-        $userId = $session->get('idUsuario');
+        $userId = $session->get('idusuario');
         $usuarioModel = new UsuarioModel();
         $user = $usuarioModel->find($userId);
 
@@ -159,7 +159,7 @@ class Dashboard extends BaseController
 
         foreach ($motorcycles as $moto) {
             // Use the higher of the two rental prices, or a default value
-            $rentalPrice = max($moto['renta_sinIva'] ?? 0, $moto['renta_conIva'] ?? 0);
+            $rentalPrice = max($moto['renta_siniva'] ?? 0, $moto['renta_coniva'] ?? 0);
             if ($rentalPrice == 0) {
                 $rentalPrice = 100; // Default value if no rental price set
             }
