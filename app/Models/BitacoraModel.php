@@ -38,7 +38,7 @@ class BitacoraModel extends Model
     {
         // Seleccionamos los datos de la bitácora y el nombre del usuario
         return $this->select('motocicleta_bitacora.*, usuario.nombre as nombre_usuario, usuario.user as user_usuario')
-                    ->join('usuario', 'usuario.idusuario = motocicleta_bitacora.idusuario')
+                    ->join('usuario', 'usuario.idUsuario = motocicleta_bitacora.idUsuario')
                     ->where('motocicleta_bitacora.placa', $placa)
                     ->orderBy('motocicleta_bitacora.created_at', 'DESC')
                     ->findAll();

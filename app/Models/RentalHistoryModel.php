@@ -26,8 +26,8 @@ class RentalHistoryModel extends Model
         'idcliente',
         'fecha_entrega',
         'fecha_renovacion',
-        'renta_siniva',
-        'renta_coniva',
+        'renta_sinIva',
+        'renta_conIva',
         'naf',
         'fecha_finalizacion',
         'finalizado_por',
@@ -46,8 +46,8 @@ class RentalHistoryModel extends Model
         'idcliente' => 'required|integer',
         'fecha_entrega' => 'required|valid_date',
         'fecha_renovacion' => 'permit_empty|valid_date',
-        'renta_siniva' => 'permit_empty|decimal',
-        'renta_coniva' => 'permit_empty|decimal',
+        'renta_sinIva' => 'permit_empty|decimal',
+        'renta_conIva' => 'permit_empty|decimal',
         'naf' => 'permit_empty|max_length[20]',
         'finalizado_por' => 'required|integer',
         'idmarca' => 'required|integer',
@@ -98,8 +98,8 @@ class RentalHistoryModel extends Model
      */
     public function getRentalHistoryByPlaca($placa)
     {
-        return $this->select('rental_history.*, cliente.cliente as nombre_cliente, marca.marca as nombre_marca, agencia.agencia as nombre_agencia')
-                    ->join('cliente', 'cliente.idcliente = rental_history.idcliente', 'left')
+        return $this->select('rental_history.*, cliente.Cliente as nombre_cliente, marca.marca as nombre_marca, agencia.agencia as nombre_agencia')
+                    ->join('cliente', 'cliente.idCliente = rental_history.idcliente', 'left')
                     ->join('marca', 'marca.idmarca = rental_history.idmarca', 'left')
                     ->join('agencia', 'agencia.idagencia = rental_history.idagencia', 'left')
                     ->where('rental_history.placa', $placa)
@@ -112,8 +112,8 @@ class RentalHistoryModel extends Model
      */
     public function getAllRentalHistory()
     {
-        return $this->select('rental_history.*, cliente.cliente as nombre_cliente, marca.marca as nombre_marca, agencia.agencia as nombre_agencia')
-                    ->join('cliente', 'cliente.idcliente = rental_history.idcliente', 'left')
+        return $this->select('rental_history.*, cliente.Cliente as nombre_cliente, marca.marca as nombre_marca, agencia.agencia as nombre_agencia')
+                    ->join('cliente', 'cliente.idCliente = rental_history.idcliente', 'left')
                     ->join('marca', 'marca.idmarca = rental_history.idmarca', 'left')
                     ->join('agencia', 'agencia.idagencia = rental_history.idagencia', 'left')
                     ->orderBy('rental_history.fecha_finalizacion', 'DESC')
@@ -130,8 +130,8 @@ class RentalHistoryModel extends Model
             'idcliente' => $rentalData['idcliente'],
             'fecha_entrega' => $rentalData['fecha_entrega'],
             'fecha_renovacion' => $rentalData['fecha_renovacion'],
-            'renta_siniva' => $rentalData['renta_siniva'],
-            'renta_coniva' => $rentalData['renta_coniva'],
+            'renta_sinIva' => $rentalData['renta_sinIva'],
+            'renta_conIva' => $rentalData['renta_conIva'],
             'naf' => $rentalData['naf'],
             'finalizado_por' => $finishedBy,
             'idmarca' => $rentalData['idmarca'],

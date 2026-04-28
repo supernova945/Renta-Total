@@ -22,7 +22,7 @@ class ClienteModel extends Model
     protected $useSoftDeletes = false;
 
     protected $allowedFields = [
-        'cliente',
+        'Cliente',
         'idempresa'
     ];
 
@@ -30,12 +30,12 @@ class ClienteModel extends Model
     protected $deletedField = 'deleted_at';
 
     protected $validationRules = [
-        'cliente' => 'required|max_length[100]',
+        'Cliente' => 'required|max_length[100]',
         'idempresa' => 'permit_empty|integer'
     ];
 
     protected $validationMessages = [
-        'cliente' => [
+        'Cliente' => [
             'required' => 'El nombre del cliente es requerido.',
             'max_length' => 'El nombre del cliente no puede exceder 100 caracteres.'
         ]
@@ -48,7 +48,7 @@ class ClienteModel extends Model
      */
     public function getAllClients()
     {
-        return $this->select('cliente.*, empresa.empresa as nombre_empresa')
+        return $this->select('cliente.*, empresa.Empresa as nombre_empresa')
                     ->join('empresa', 'empresa.idempresa = cliente.idempresa', 'left')
                     ->findAll();
     }
@@ -58,7 +58,7 @@ class ClienteModel extends Model
      */
     public function getClientWithCompany($idCliente)
     {
-        return $this->select('cliente.*, empresa.empresa as nombre_empresa')
+        return $this->select('cliente.*, empresa.Empresa as nombre_empresa')
                     ->join('empresa', 'empresa.idempresa = cliente.idempresa', 'left')
                     ->find($idCliente);
     }
