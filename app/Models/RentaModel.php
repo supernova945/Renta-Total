@@ -86,8 +86,8 @@ class RentaModel extends Model
      */
     public function getActiveRentals()
     {
-        return $this->select('motos.*, cliente.Cliente as nombre_cliente, marca.marca as nombre_marca, estado.estado as nombre_estado, agencia.agencia as nombre_agencia')
-                    ->join('cliente', 'cliente.idCliente = motos.idcliente', 'left')
+        return $this->select('motos.*, cliente.cliente as nombre_cliente, marca.marca as nombre_marca, estado.estado as nombre_estado, agencia.agencia as nombre_agencia')
+                    ->join('cliente', 'cliente.idcliente = motos.idcliente', 'left')
                     ->join('marca', 'marca.idmarca = motos.idmarca', 'left')
                     ->join('estado', 'estado.idestado = motos.idestado', 'left')
                     ->join('agencia', 'agencia.idagencia = motos.idagencia', 'left')
@@ -113,8 +113,8 @@ class RentaModel extends Model
      */
     public function getRentalDetails($placa)
     {
-        return $this->select('motos.*, cliente.Cliente as nombre_cliente, marca.marca as nombre_marca, estado.estado as nombre_estado, agencia.agencia as nombre_agencia')
-                    ->join('cliente', 'cliente.idCliente = motos.idcliente', 'left')
+        return $this->select('motos.*, cliente.cliente as nombre_cliente, marca.marca as nombre_marca, estado.estado as nombre_estado, agencia.agencia as nombre_agencia')
+                    ->join('cliente', 'cliente.idcliente = motos.idcliente', 'left')
                     ->join('marca', 'marca.idmarca = motos.idmarca', 'left')
                     ->join('estado', 'estado.idestado = motos.idestado', 'left')
                     ->join('agencia', 'agencia.idagencia = motos.idagencia', 'left')
@@ -212,8 +212,8 @@ class RentaModel extends Model
         $currentDate = date('Y-m-d');
         $futureDate = date('Y-m-d', strtotime("+{$daysAhead} days"));
 
-        return $this->select('motos.*, cliente.Cliente as nombre_cliente, marca.marca as nombre_marca, estado.estado as nombre_estado, agencia.agencia as nombre_agencia')
-                    ->join('cliente', 'cliente.idCliente = motos.idcliente', 'left')
+        return $this->select('motos.*, cliente.cliente as nombre_cliente, marca.marca as nombre_marca, estado.estado as nombre_estado, agencia.agencia as nombre_agencia')
+                    ->join('cliente', 'cliente.idcliente = motos.idcliente', 'left')
                     ->join('marca', 'marca.idmarca = motos.idmarca', 'left')
                     ->join('estado', 'estado.idestado = motos.idestado', 'left')
                     ->join('agencia', 'agencia.idagencia = motos.idagencia', 'left')
