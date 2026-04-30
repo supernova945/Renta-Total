@@ -49,7 +49,7 @@ class Empresas extends BaseController
 
         // Validate required fields
         $rules = [
-            'Empresa' => 'required|max_length[50]|is_unique[empresa.Empresa]',
+            'Empresa' => 'required|max_length[50]|is_unique[empresa.empresa]',
             'direccion' => 'permit_empty|max_length[250]',
             'telefono' => 'permit_empty|max_length[9]|regex_match[/^[0-9]+$/]',
             'correo' => 'permit_empty|valid_email|max_length[100]',
@@ -93,13 +93,13 @@ class Empresas extends BaseController
     /**
      * Get company details
      */
-    public function getCompany($idEmpresa)
+    public function getCompany($idempresa)
     {
         if (!$this->request->isAJAX()) {
             return $this->failUnauthorized('Acceso no autorizado.');
         }
 
-        $company = $this->empresaModel->getCompany($idEmpresa);
+        $company = $this->empresaModel->getCompany($idempresa);
 
         if ($company) {
             return $this->respond($company);
@@ -111,7 +111,7 @@ class Empresas extends BaseController
     /**
      * Update company via AJAX
      */
-    public function update($idEmpresa)
+    public function update($idempresa)
     {
         if (!$this->request->isAJAX() || !$this->request->is('put')) {
             return $this->failUnauthorized('Acceso no autorizado.');
@@ -125,7 +125,7 @@ class Empresas extends BaseController
 
         // Validate required fields
         $rules = [
-            'Empresa' => 'required|max_length[50]|is_unique[empresa.Empresa,idempresa,' . $idEmpresa . ']'
+            'Empresa' => 'required|max_length[50]|is_unique[empresa.empresa,idempresa,' . $idempresa . ']'
         ];
 
         if (!$this->validate($rules)) {
@@ -133,7 +133,7 @@ class Empresas extends BaseController
         }
 
         try {
-            if ($this->empresaModel->update($idEmpresa, $data)) {
+            if ($this->empresaModel->update($idempresa, $data)) {
                 return $this->respond([
                     'message' => 'Empresa actualizada exitosamente.'
                 ]);
@@ -149,14 +149,14 @@ class Empresas extends BaseController
     /**
      * Delete company via AJAX
      */
-    public function delete($idEmpresa)
+    public function delete($idempresa)
     {
         if (!$this->request->isAJAX() || !$this->request->is('delete')) {
             return $this->failUnauthorized('Acceso no autorizado.');
         }
 
         try {
-            if ($this->empresaModel->delete($idEmpresa)) {
+            if ($this->empresaModel->delete($idempresa)) {
                 return $this->respond([
                     'success' => true,
                     'message' => 'Empresa eliminada exitosamente.'
