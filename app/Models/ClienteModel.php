@@ -22,7 +22,7 @@ class ClienteModel extends Model
     protected $useSoftDeletes = false;
 
     protected $allowedFields = [
-        'Cliente',
+        'cliente',
         'idempresa'
     ];
 
@@ -30,12 +30,12 @@ class ClienteModel extends Model
     protected $deletedField = 'deleted_at';
 
     protected $validationRules = [
-        'Cliente' => 'required|max_length[100]',
+        'cliente' => 'required|max_length[100]',
         'idempresa' => 'permit_empty|integer'
     ];
 
     protected $validationMessages = [
-        'Cliente' => [
+        'cliente' => [
             'required' => 'El nombre del cliente es requerido.',
             'max_length' => 'El nombre del cliente no puede exceder 100 caracteres.'
         ]
