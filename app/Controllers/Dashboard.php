@@ -46,7 +46,7 @@ class Dashboard extends BaseController
         $rol = $session->get('rol');
 
         // Obtener el ID del usuario desde la sesión y sus datos desde la BD
-        $userId = $session->get('idUsuario');
+        $userId = $session->get('idusuario');
         $usuarioModel = new UsuarioModel();
         $user = $usuarioModel->find($userId);
 
