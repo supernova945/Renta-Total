@@ -56,18 +56,18 @@ class ClienteModel extends Model
     /**
      * Get client by ID with company information
      */
-    public function getClientWithCompany($idCliente)
+    public function getClientWithCompany($idcliente)
     {
         return $this->select('cliente.*, empresa.Empresa as nombre_empresa')
                     ->join('empresa', 'empresa.idempresa = cliente.idempresa', 'left')
-                    ->find($idCliente);
+                    ->find($idcliente);
     }
 
     /**
      * Get client by ID (simple method)
      */
-    public function getClient($idCliente)
+    public function getClient($idcliente)
     {
-        return $this->find($idCliente);
+        return $this->find($idcliente);
     }
 }
