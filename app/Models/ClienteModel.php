@@ -48,7 +48,7 @@ class ClienteModel extends Model
      */
     public function getAllClients()
     {
-        return $this->select('cliente.*, empresa.Empresa as nombre_empresa')
+        return $this->select('cliente.*, empresa.empresa as nombre_empresa')
                     ->join('empresa', 'empresa.idempresa = cliente.idempresa', 'left')
                     ->findAll();
     }
@@ -58,7 +58,7 @@ class ClienteModel extends Model
      */
     public function getClientWithCompany($idcliente)
     {
-        return $this->select('cliente.*, empresa.Empresa as nombre_empresa')
+        return $this->select('cliente.*, empresa.empresa as nombre_empresa')
                     ->join('empresa', 'empresa.idempresa = cliente.idempresa', 'left')
                     ->find($idcliente);
     }
