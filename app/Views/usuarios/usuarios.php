@@ -266,12 +266,12 @@
                 </td>
                 <td class="px-6 py-4 text-sm font-medium">
                   <?php if (in_array($rol, $allowedRoles)): ?>
-                  <button class="view-user text-primary hover:text-primary/80 mr-3" data-user-id="<?= $usuario['idUsuario'] ?>">
+                  <button class="view-user text-primary hover:text-primary/80 mr-3" data-user-id="<?= $usuario['idusuario'] ?>">
                     <i class="ri-eye-line"></i>
                   </button>
                   <?php endif; ?>
                   <?php if (in_array($rol, $allowedRoles)): ?>
-                  <button class="delete-user text-red-600 hover:text-red-800" data-user-id="<?= $usuario['idUsuario'] ?>">
+                  <button class="delete-user text-red-600 hover:text-red-800" data-user-id="<?= $usuario['idusuario'] ?>">
                     <i class="ri-delete-bin-line"></i>
                   </button>
                   <?php endif; ?>
