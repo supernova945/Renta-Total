@@ -54,7 +54,7 @@ function bindUserActionButtons() {
           document.getElementById('detailRegistration').textContent = user.created_at ?? 'Desconocida';
           document.getElementById('userDetailModal').classList.remove('hidden');
         
-          document.getElementById('editUserButton').setAttribute('data-user-id', user.idUsuario);
+          document.getElementById('editUserButton').setAttribute('data-user-id', user.idusuario);
         })
         .catch(() => {
           alert('Error al cargar el usuario');
@@ -106,7 +106,7 @@ function bindUserActionButtons() {
       return response.json();
     })
     .then(user => {
-      document.getElementById('editUserId').value = user.idUsuario;
+      document.getElementById('editUserId').value = user.idusuario;
       document.getElementById('editNombre').value = user.nombre;
       document.getElementById('editUsuario').value = user.user;
       document.getElementById('editCorreo').value = user.correo;
