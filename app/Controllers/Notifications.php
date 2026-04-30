@@ -20,7 +20,7 @@ class Notifications extends BaseController
      */
     public function count()
     {
-        $userId = session()->get('idUsuario');
+        $userId = session()->get('idusuario');
         $userRole = session()->get('rol');
 
         if (!$userId) {
@@ -44,7 +44,7 @@ class Notifications extends BaseController
      */
     public function list()
     {
-        $userId = session()->get('idUsuario');
+        $userId = session()->get('idusuario');
         $userRole = session()->get('rol');
 
         if (!$userId) {

@@ -71,7 +71,7 @@ class ActivityLogModel extends Model
     public function getRecentActivities($limit = 50)
     {
         return $this->select('activity_log.*, usuario.nombre as user_name, usuario.user as user_username')
-                    ->join('usuario', 'usuario.idUsuario = activity_log.user_id', 'left')
+                    ->join('usuario', 'usuario.idusuario = activity_log.user_id', 'left')
                     ->orderBy('activity_log.created_at', 'DESC')
                     ->limit($limit)
                     ->findAll();
@@ -94,7 +94,7 @@ class ActivityLogModel extends Model
     public function getActivitiesWithDateFilter($startDate = null, $endDate = null)
     {
         $builder = $this->select('activity_log.*, usuario.nombre as user_name, usuario.user as user_username')
-                        ->join('usuario', 'usuario.idUsuario = activity_log.user_id', 'left')
+                        ->join('usuario', 'usuario.idusuario = activity_log.user_id', 'left')
                         ->orderBy('activity_log.created_at', 'DESC');
 
         if ($startDate) {
