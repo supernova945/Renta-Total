@@ -313,7 +313,7 @@
         e.preventDefault();
 
         const data = {
-          empresa: companyForm.Empresa.value.trim(),
+          Empresa: companyForm.empresa.value.trim(),
           direccion: companyForm.direccion.value.trim() || null,
           telefono: companyForm.telefono.value.trim() || null,
           correo: companyForm.correo.value.trim() || null,
