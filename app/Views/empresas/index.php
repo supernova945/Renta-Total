@@ -167,7 +167,7 @@
           <tbody class="bg-white divide-y divide-gray-200">
             <?php foreach ($empresas as $empresa): ?>
               <tr>
-                <td class="px-6 py-4 text-sm text-gray-900 font-medium"><?= esc($empresa['Empresa']) ?></td>
+                <td class="px-6 py-4 text-sm text-gray-900 font-medium"><?= esc($empresa['empresa']) ?></td>
                 <td class="px-6 py-4 text-sm text-gray-600">
                   <?= esc($empresa['telefono'] ?: '—') ?>
                 </td>
