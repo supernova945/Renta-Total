@@ -313,7 +313,7 @@
         e.preventDefault();
 
         const data = {
-          empresa: companyForm.empresa.value.trim(),
+          Empresa: companyForm.Empresa.value.trim(),
           direccion: companyForm.direccion.value.trim() || null,
           telefono: companyForm.telefono.value.trim() || null,
           correo: companyForm.correo.value.trim() || null,
@@ -363,9 +363,9 @@
           })
           .then(response => response.json())
           .then(data => {
-            if (data.empresa) {
+            if (data.Empresa) {
               // Populate all detail fields
-              document.getElementById('detailName').textContent = data.empresa || '—';
+              document.getElementById('detailName').textContent = data.Empresa || '—';
               document.getElementById('detailAddress').textContent = data.direccion || '—';
               document.getElementById('detailPhone').textContent = data.telefono || '—';
               document.getElementById('detailEmail').textContent = data.correo || '—';
@@ -402,9 +402,9 @@
           })
           .then(response => response.json())
           .then(data => {
-            if (data.empresa) {
+            if (data.Empresa) {
               document.getElementById('editCompanyId').value = data.idempresa;
-              document.getElementById('editCompanyName').value = data.empresa;
+              document.getElementById('editCompanyName').value = data.Empresa;
               document.getElementById('editCompanyAddress').value = data.direccion || '';
               document.getElementById('editCompanyPhone').value = data.telefono || '';
               document.getElementById('editCompanyEmail').value = data.correo || '';
@@ -434,9 +434,9 @@
           })
           .then(response => response.json())
           .then(data => {
-            if (data.empresa) {
+            if (data.Empresa) {
               document.getElementById('editCompanyId').value = data.idempresa;
-              document.getElementById('editCompanyName').value = data.empresa;
+              document.getElementById('editCompanyName').value = data.Empresa;
               document.getElementById('editCompanyAddress').value = data.direccion || '';
               document.getElementById('editCompanyPhone').value = data.telefono || '';
               document.getElementById('editCompanyEmail').value = data.correo || '';
@@ -504,7 +504,7 @@
         const companyId = document.getElementById('editCompanyId').value;
 
         const data = {
-          empresa: document.getElementById('editCompanyName').value,
+          Empresa: document.getElementById('editCompanyName').value,
           direccion: document.getElementById('editCompanyAddress').value.trim() || null,
           telefono: document.getElementById('editCompanyPhone').value.trim() || null,
           correo: document.getElementById('editCompanyEmail').value.trim() || null,
