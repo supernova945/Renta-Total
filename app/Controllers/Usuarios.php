@@ -66,7 +66,7 @@ class Usuarios extends BaseController
         'nombre'   => $this->request->getVar('nombre'),
         'user'     => $this->request->getVar('user'),
         // Aquí usamos la P mayúscula solo para la BASE DE DATOS si así se llama tu columna
-        'Password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
+        'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
         'correo'   => $this->request->getVar('correo'),
         'rol'      => $this->request->getVar('rol'),
         'estado'   => 1, 
@@ -203,7 +203,7 @@ class Usuarios extends BaseController
         $this->usuarioModel->insert([
             'nombre'   => trim($input['name']),
             'user'     => trim($input['usuario']),
-            'Password' => password_hash($input['password'], PASSWORD_DEFAULT),
+            'password' => password_hash($input['password'], PASSWORD_DEFAULT),
             'correo'   => trim($input['email']),
             'dui'      => trim($input['dui']),
             'estado'   => $input['estado'] === 'activo' ? 1 : 0,
@@ -315,7 +315,7 @@ class Usuarios extends BaseController
         $this->usuarioModel->insert([
             'nombre'   => trim($input['name']),
             'user'     => trim($input['usuario']),
-            'Password' => password_hash($input['password'], PASSWORD_DEFAULT),
+            'password' => password_hash($input['password'], PASSWORD_DEFAULT),
             'correo'   => trim($input['email']),
             'dui'      => trim($input['dui']),
             'estado'   => $input['estado'] === 'activo' ? 1 : 0,
