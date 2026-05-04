@@ -243,7 +243,7 @@
                 <option value="">Seleccionar cliente</option>
                 <?php if (!empty($clientes)): ?>
                   <?php foreach ($clientes as $cliente): ?>
-                    <option value="<?= esc($cliente['idCliente']) ?>"><?= esc($cliente['Cliente']) ?></option>
+                    <option value="<?= esc($cliente['idcliente']) ?>"><?= esc($cliente['cliente']) ?></option>
                   <?php endforeach; ?>
                 <?php endif; ?>
               </select>
@@ -412,8 +412,8 @@
             document.getElementById('modalCliente').value = data.idcliente;
             document.getElementById('modalFechaEntrega').value = data.fecha_entrega;
             document.getElementById('modalFechaRenovacion').value = data.fecha_renovacion;
-            document.getElementById('modalRentaSinIva').value = data.renta_sinIva;
-            document.getElementById('modalRentaConIva').value = data.renta_conIva;
+            document.getElementById('modalRentaSinIva').value = data.renta_siniva;
+            document.getElementById('modalRentaConIva').value = data.renta_coniva;
             openModal('Editar Renta');
           }
         })
