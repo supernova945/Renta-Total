@@ -1126,7 +1126,7 @@ const resetAddModalState = () => {
             idmarca: this.editMarca.value,
             modelo: this.editModelo.value,
             año: this.editAnio.value,
-            Motor: this.editMotor.value,
+            motor: this.editMotor.value,
             idestado: this.editEstado.value,
             idagencia: this.editAgencia.value || null,
 
