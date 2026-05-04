@@ -504,7 +504,7 @@
         const companyId = document.getElementById('editCompanyId').value;
 
         const data = {
-          Empresa: document.getElementById('editCompanyName').value,
+          empresa: document.getElementById('editCompanyName').value,
           direccion: document.getElementById('editCompanyAddress').value.trim() || null,
           telefono: document.getElementById('editCompanyPhone').value.trim() || null,
           correo: document.getElementById('editCompanyEmail').value.trim() || null,
