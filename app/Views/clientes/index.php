@@ -144,7 +144,7 @@
           <select id="filterEmpresa" class="w-full px-3 py-2 border rounded-button">
             <option value="">Todas las empresas</option>
             <?php foreach ($empresas as $empresa): ?>
-              <option value="<?= esc($empresa['Empresa']) ?>"><?= esc($empresa['Empresa']) ?></option>
+              <option value="<?= esc($empresa['empresa']) ?>"><?= esc($empresa['empresa']) ?></option>
             <?php endforeach; ?>
           </select>
           <button id="clearFilters"
