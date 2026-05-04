@@ -923,7 +923,7 @@ const resetAddModalState = () => {
         document.getElementById('editMarca').value = data.idmarca || '';
         document.getElementById('editModelo').value = data.modelo || '';
         document.getElementById('editAnio').value = data.año || '';
-        document.getElementById('editMotor').value = data.Motor || '';
+        document.getElementById('editMotor').value = data.motor || '';
         document.getElementById('editEstado').value = data.idestado || '';
         document.getElementById('editChasis').value = data.chasis || '';
         document.getElementById('editIdCliente').value = data.idcliente || '';
@@ -967,7 +967,7 @@ const resetAddModalState = () => {
                     document.getElementById('detailMotorcycleMarca').textContent = data.nombre_marca || 'N/A';
                     document.getElementById('detailMotorcycleModelo').textContent = data.modelo || 'N/A';
                     document.getElementById('detailMotorcycleAnio').textContent = data.año || 'N/A'; // Note: 'año'
-                    document.getElementById('detailMotorcycleMotor').textContent = data.Motor || 'N/A'; // Note: 'Motor'
+                    document.getElementById('detailMotorcycleMotor').textContent = data.motor || 'N/A'; // Note: 'Motor'
                     document.getElementById('detailMotorcycleEstado').textContent = data.nombre_estado || 'N/A';
                     const motivoMap = {
                         'NUEVO': '✨ Nueva Flota',
