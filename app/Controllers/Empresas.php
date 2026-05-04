@@ -94,7 +94,7 @@ class Empresas extends BaseController
      * Get company details
      */
     public function getCompany($idempresa)
-    {
+    { 
         if (!$this->request->isAJAX()) {
             return $this->failUnauthorized('Acceso no autorizado.');
         }
