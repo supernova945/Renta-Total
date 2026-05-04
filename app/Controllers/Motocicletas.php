@@ -134,16 +134,16 @@ if (!$this->validate($rules, $messages)) {
             // Campos opcionales
             'chasis'           => $input['chasis'] ?? null,
             'idcliente'        => $input['idcliente'] ?? null,
-            'Sucursal'         => $input['sucursal'] ?? null,
+            'sucursal'         => $input['sucursal'] ?? null,
             'color'            => $input['color'] ?? null,
             'fecha_entrega'    => $input['fecha_entrega'] ?? null,
             'fecha_renovacion' => $input['fecha_renovacion'] ?? null,
-            'Envio'            => $input['envio'] ?? null,
+            'envio'            => $input['envio'] ?? null,
             'taller'           => $input['taller'] ?? null,
             'iddepartamento'   => $input['iddepartamento'] ?? null,
             'idagencia'        => $input['idagencia'] ?? null,
-            'renta_sinIva'     => $input['renta_sinIva'] ?? null,
-            'renta_conIva'     => $input['renta_conIva'] ?? null,
+            'renta_siniva'     => $input['renta_siniva'] ?? null,
+            'renta_coniva'     => $input['renta_coniva'] ?? null,
             'naf'              => $input['naf'] ?? null,
         ];
 
