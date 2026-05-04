@@ -170,17 +170,17 @@
           <tbody class="bg-white divide-y divide-gray-200">
             <?php foreach ($clientes as $cliente): ?>
               <tr>
-                <td class="px-6 py-4 text-sm text-gray-900"><?= esc($cliente['Cliente']) ?></td>
+                <td class="px-6 py-4 text-sm text-gray-900"><?= esc($cliente['cliente']) ?></td>
                 <td class="px-6 py-4 text-sm text-gray-500"><?= esc($cliente['nombre_empresa'] ?: 'Sin empresa') ?></td>
                 <td class="px-6 py-4 text-sm font-medium">
                   <?php if (in_array($rol, $allowedRoles)): ?>
-                  <button class="view-client text-primary hover:text-primary/80 mr-3" data-client-id="<?= $cliente['idCliente'] ?>">
+                  <button class="view-client text-primary hover:text-primary/80 mr-3" data-client-id="<?= $cliente['idcliente'] ?>">
                     <i class="ri-eye-line"></i>
                   </button>
-                  <button class="edit-client text-blue-600 hover:text-blue-800 mr-3" data-client-id="<?= $cliente['idCliente'] ?>">
+                  <button class="edit-client text-blue-600 hover:text-blue-800 mr-3" data-client-id="<?= $cliente['idcliente'] ?>">
                     <i class="ri-edit-line"></i>
                   </button>
-                  <button class="delete-client text-red-600 hover:text-red-800" data-client-id="<?= $cliente['idCliente'] ?>">
+                  <button class="delete-client text-red-600 hover:text-red-800" data-client-id="<?= $cliente['idcliente'] ?>">
                     <i class="ri-delete-bin-line"></i>
                   </button>
                   <?php endif; ?>
@@ -335,7 +335,7 @@
         e.preventDefault();
 
         const data = {
-          Cliente: clientForm.Cliente.value.trim(),
+          cliente: clientForm.Cliente.value.trim(),
           idempresa: clientForm.idempresa.value || null
         };
 
@@ -381,10 +381,10 @@
           })
           .then(response => response.json())
           .then(data => {
-            if (data.Cliente) {
-              document.getElementById('detailName').textContent = data.Cliente;
+            if (data.cliente) {
+              document.getElementById('detailName').textContent = data.cliente;
               document.getElementById('detailCompany').textContent = data.nombre_empresa || 'Sin empresa';
-              document.getElementById('editClientButton').setAttribute('data-client-id', data.idCliente);
+              document.getElementById('editClientButton').setAttribute('data-client-id', data.idcliente);
               document.getElementById('clientDetailModal').classList.remove('hidden');
             } else {
               alert('Cliente no encontrado');
@@ -413,9 +413,9 @@
           })
           .then(response => response.json())
           .then(data => {
-            if (data.Cliente) {
-              document.getElementById('editClientId').value = data.idCliente;
-              document.getElementById('editClientName').value = data.Cliente;
+            if (data.cliente) {
+              document.getElementById('editClientId').value = data.idcliente;
+              document.getElementById('editClientName').value = data.cliente;
               document.getElementById('editClientCompany').value = data.idempresa || '';
               document.getElementById('editClientModal').classList.remove('hidden');
             } else {
@@ -442,9 +442,9 @@
           })
           .then(response => response.json())
           .then(data => {
-            if (data.Cliente) {
-              document.getElementById('editClientId').value = data.idCliente;
-              document.getElementById('editClientName').value = data.Cliente;
+            if (data.cliente) {
+              document.getElementById('editClientId').value = data.idcliente;
+              document.getElementById('editClientName').value = data.cliente;
               document.getElementById('editClientCompany').value = data.idempresa || '';
               document.getElementById('editClientModal').classList.remove('hidden');
             } else {
@@ -480,7 +480,7 @@
         const clientId = document.getElementById('editClientId').value;
 
         const data = {
-          Cliente: document.getElementById('editClientName').value,
+          cliente: document.getElementById('editClientName').value,
           idempresa: document.getElementById('editClientCompany').value || null
         };
 
