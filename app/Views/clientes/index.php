@@ -249,7 +249,7 @@
               <select id="editClientCompany" class="w-full px-3 py-2 border rounded-button">
                 <option value="">Sin empresa</option>
                 <?php foreach ($empresas as $empresa): ?>
-                  <option value="<?= $empresa['idempresa'] ?>"><?= esc($empresa['Empresa']) ?></option>
+                  <option value="<?= $empresa['idempresa'] ?>"><?= esc($empresa['empresa']) ?></option>
                 <?php endforeach; ?>
               </select>
             </div>
