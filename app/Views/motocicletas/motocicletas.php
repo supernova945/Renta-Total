@@ -1538,8 +1538,8 @@ function showComments() {
                     <p><span class="font-medium">Cliente:</span> ${cliente}</p>
                     <p><span class="font-medium">Fecha Entrega:</span> ${entregaDate}</p>
                     <p><span class="font-medium">Fecha Renovación:</span> ${renovacionDate}</p>
-                    <p><span class="font-medium">Renta sin IVA:</span> $${renta.renta_sinIva ? parseFloat(renta.renta_sinIva).toFixed(2) : '0.00'}</p>
-                    <p><span class="font-medium">Renta con IVA:</span> $${renta.renta_conIva ? parseFloat(renta.renta_conIva).toFixed(2) : '0.00'}</p>
+                    <p><span class="font-medium">Renta sin IVA:</span> $${renta.renta_siniva ? parseFloat(renta.renta_siniva).toFixed(2) : '0.00'}</p>
+                    <p><span class="font-medium">Renta con IVA:</span> $${renta.renta_coniva ? parseFloat(renta.renta_coniva).toFixed(2) : '0.00'}</p>
                     <p><span class="font-medium">Agencia:</span> ${renta.nombre_agencia || 'N/A'}</p>
                   </div>
                 </div>
