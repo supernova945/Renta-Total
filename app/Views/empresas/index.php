@@ -365,7 +365,7 @@
           .then(data => {
             if (data.Empresa) {
               // Populate all detail fields
-              document.getElementById('detailName').textContent = data.Empresa || '—';
+              document.getElementById('detailName').textContent = data.empresa || '—';
               document.getElementById('detailAddress').textContent = data.direccion || '—';
               document.getElementById('detailPhone').textContent = data.telefono || '—';
               document.getElementById('detailEmail').textContent = data.correo || '—';
