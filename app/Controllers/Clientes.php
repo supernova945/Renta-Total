@@ -53,7 +53,7 @@ class Clientes extends BaseController
 
         // Validate required fields
         $rules = [
-            'Cliente' => 'required|max_length[100]',
+            'cliente' => 'required|max_length[100]',
             'idempresa' => 'permit_empty|integer'
         ];
 
@@ -65,7 +65,7 @@ class Clientes extends BaseController
             if ($this->clienteModel->insert($data)) {
                 return $this->respondCreated([
                     'message' => 'Cliente creado exitosamente.',
-                    'idCliente' => $this->clienteModel->getInsertID()
+                    'idcliente' => $this->clienteModel->getInsertID()
                 ]);
             } else {
                 return $this->fail('No se pudo crear el cliente.', 500);
@@ -125,7 +125,7 @@ class Clientes extends BaseController
 
         // Validate required fields
         $rules = [
-            'Cliente' => 'required|max_length[100]',
+            'cliente' => 'required|max_length[100]',
             'idempresa' => 'permit_empty|integer'
         ];
 
