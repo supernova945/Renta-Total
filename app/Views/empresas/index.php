@@ -363,7 +363,7 @@
           })
           .then(response => response.json())
           .then(data => {
-            if (data.Empresa) {
+            if (data.empresa) {
               // Populate all detail fields
               document.getElementById('detailName').textContent = data.empresa || '—';
               document.getElementById('detailAddress').textContent = data.direccion || '—';
@@ -402,7 +402,7 @@
           })
           .then(response => response.json())
           .then(data => {
-            if (data.Empresa) {
+            if (data.empresa) {
               document.getElementById('editCompanyId').value = data.idempresa;
               document.getElementById('editCompanyName').value = data.empresa;
               document.getElementById('editCompanyAddress').value = data.direccion || '';
@@ -434,7 +434,7 @@
           })
           .then(response => response.json())
           .then(data => {
-            if (data.Empresa) {
+            if (data.empresa) {
               document.getElementById('editCompanyId').value = data.idempresa;
               document.getElementById('editCompanyName').value = data.empresa;
               document.getElementById('editCompanyAddress').value = data.direccion || '';
