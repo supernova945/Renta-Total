@@ -122,7 +122,7 @@ class ServicioModel extends Model
 
     public function getServiceWithMotorcycle($id)
     {
-        return $this->select('servicios.*, motos.modelo, marca.marca AS nombre_marca, motos.año, motos.Motor, motos.color')
+        return $this->select('servicios.*, motos.modelo, marca.marca AS nombre_marca, motos.año, motos.motor, motos.color')
                     ->join('motos', 'motos.placa = servicios.placa_motocicleta')
                     ->join('marca', 'marca.idmarca = motos.idmarca')
                     ->find($id);

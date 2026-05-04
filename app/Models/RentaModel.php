@@ -33,8 +33,8 @@ class RentaModel extends Model
         'taller',
         'iddepartamento',
         'idagencia',
-        'renta_sinIva',
-        'renta_conIva',
+        'renta_siniva',
+        'renta_coniva',
         'naf',
         'modificado_por'
     ];
@@ -47,8 +47,8 @@ class RentaModel extends Model
         'idcliente' => 'permit_empty|integer',
         'fecha_entrega' => 'permit_empty|valid_date',
         'fecha_renovacion' => 'permit_empty|valid_date',
-        'renta_sinIva' => 'permit_empty|decimal',
-        'renta_conIva' => 'permit_empty|decimal',
+        'renta_siniva' => 'permit_empty|decimal',
+        'renta_coniva' => 'permit_empty|decimal',
         'modificado_por' => 'required|integer'
     ];
 
@@ -69,11 +69,11 @@ class RentaModel extends Model
             'required' => 'La fecha de renovación es requerida.',
             'valid_date' => 'Fecha de renovación inválida.'
         ],
-        'renta_sinIva' => [
+        'renta_siniva' => [
             'required' => 'La renta sin IVA es requerida.',
             'decimal' => 'Valor inválido para renta sin IVA.'
         ],
-        'renta_conIva' => [
+        'renta_coniva' => [
             'required' => 'La renta con IVA es requerida.',
             'decimal' => 'Valor inválido para renta con IVA.'
         ]
@@ -158,8 +158,8 @@ class RentaModel extends Model
                 'idestado' => 5, // Estado "Disponible"
                 'fecha_entrega' => null,
                 'fecha_renovacion' => null,
-                'renta_sinIva' => 0,
-                'renta_conIva' => 0,
+                'renta_siniva' => 0,
+                'renta_coniva' => 0,
                 'modificado_por' => $modifiedBy
             ];
 
