@@ -931,11 +931,11 @@ const resetAddModalState = () => {
         // For date inputs, ensure format is YYYY-MM-DD
         document.getElementById('editFechaEntrega').value = data.fecha_entrega ? data.fecha_entrega.split(' ')[0] : '';
         document.getElementById('editFechaRenovacion').value = data.fecha_renovacion ? data.fecha_renovacion.split(' ')[0] : '';
-        document.getElementById('editEnvio').value = data.Envio || '';
+        document.getElementById('editEnvio').value = data.envio || '';
         document.getElementById('editTaller').value = data.taller || '';
         document.getElementById('editIdDepartamento').value = data.iddepartamento || '';
-        document.getElementById('editRentaSinIva').value = data.renta_sinIva || '';
-        document.getElementById('editRentaConIva').value = data.renta_conIva || '';
+        document.getElementById('editRentaSinIva').value = data.renta_siniva || '';
+        document.getElementById('editRentaConIva').value = data.renta_coniva || '';
         document.getElementById('editNAF').value = data.naf || '';
         // ... otros campos
 
@@ -997,11 +997,11 @@ const resetAddModalState = () => {
                     document.getElementById('detailMotorcycleColor').textContent = data.color || 'N/A';
                     document.getElementById('detailMotorcycleFechaEntrega').textContent = data.fecha_entrega || 'N/A';
                     document.getElementById('detailMotorcycleFechaRenovacion').textContent = data.fecha_renovacion || 'N/A';
-                    document.getElementById('detailMotorcycleEnvio').textContent = data.Envio || 'N/A';
+                    document.getElementById('detailMotorcycleEnvio').textContent = data.envio || 'N/A';
                     document.getElementById('detailMotorcycleTaller').textContent = data.taller || 'N/A';
                     document.getElementById('detailMotorcycleIdDepartamento').textContent = data.iddepartamento || 'N/A';
-                    document.getElementById('detailMotorcycleRentaSinIva').textContent = data.renta_sinIva || 'N/A';
-                    document.getElementById('detailMotorcycleRentaConIva').textContent = data.renta_conIva || 'N/A';
+                    document.getElementById('detailMotorcycleRentaSinIva').textContent = data.renta_siniva || 'N/A';
+                    document.getElementById('detailMotorcycleRentaConIva').textContent = data.renta_coniva || 'N/A';
                     document.getElementById('detailMotorcycleNAF').textContent = data.naf || 'N/A';
 
                     // Check if motorcycle is over 5 years old and show warning
@@ -1135,11 +1135,11 @@ const resetAddModalState = () => {
             color: this.editColor.value || null,
             fecha_entrega: this.editFechaEntrega.value || null,
             fecha_renovacion: this.editFechaRenovacion.value || null,
-            Envio: this.editEnvio.value || null,
+            envio: this.editEnvio.value || null,
             taller: this.editTaller.value || null,
             iddepartamento: this.editIdDepartamento.value || null,
-            renta_sinIva: this.editRentaSinIva.value || null,
-            renta_conIva: this.editRentaConIva.value || null,
+            renta_siniva: this.editRentaSinIva.value || null,
+            renta_coniva: this.editRentaConIva.value || null,
             naf: this.editNAF.value || null,
         };
 
