@@ -114,8 +114,8 @@
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   <?= date('d/m/Y', strtotime($renta['fecha_renovacion'])) ?>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$<?= number_format($renta['renta_sinIva'], 2) ?></td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$<?= number_format($renta['renta_conIva'], 2) ?></td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$<?= number_format($renta['renta_siniva'], 2) ?></td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">$<?= number_format($renta['renta_coniva'], 2) ?></td>
                 <td class="px-6 py-4 whitespace-nowrap">
                   <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
                     <?= esc($renta['nombre_estado']) ?>
