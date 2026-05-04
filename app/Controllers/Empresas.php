@@ -49,7 +49,7 @@ class Empresas extends BaseController
 
         // Validate required fields
         $rules = [
-            'Empresa' => 'required|max_length[50]|is_unique[empresa.empresa]',
+            'empresa' => 'required|max_length[50]|is_unique[empresa.empresa]',
             'direccion' => 'permit_empty|max_length[250]',
             'telefono' => 'permit_empty|max_length[9]|regex_match[/^[0-9]+$/]',
             'correo' => 'permit_empty|valid_email|max_length[100]',
