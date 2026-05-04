@@ -404,7 +404,7 @@
           .then(data => {
             if (data.Empresa) {
               document.getElementById('editCompanyId').value = data.idempresa;
-              document.getElementById('editCompanyName').value = data.Empresa;
+              document.getElementById('editCompanyName').value = data.empresa;
               document.getElementById('editCompanyAddress').value = data.direccion || '';
               document.getElementById('editCompanyPhone').value = data.telefono || '';
               document.getElementById('editCompanyEmail').value = data.correo || '';
@@ -436,7 +436,7 @@
           .then(data => {
             if (data.Empresa) {
               document.getElementById('editCompanyId').value = data.idempresa;
-              document.getElementById('editCompanyName').value = data.Empresa;
+              document.getElementById('editCompanyName').value = data.empresa;
               document.getElementById('editCompanyAddress').value = data.direccion || '';
               document.getElementById('editCompanyPhone').value = data.telefono || '';
               document.getElementById('editCompanyEmail').value = data.correo || '';
