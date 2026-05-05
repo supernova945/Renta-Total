@@ -398,7 +398,7 @@ if (!$this->validate($rules, $messages)) {
         $data = [
             'placa'      => $input['placa'],
             'comentario' => $input['comentario'],
-            'idusuario'  => $userId
+            'idUsuario'  => $userId
         ];
 
         try {
