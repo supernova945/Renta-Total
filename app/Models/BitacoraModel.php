@@ -11,7 +11,7 @@ class BitacoraModel extends Model
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
-    protected $allowedFields    = ['placa', 'comentario', 'idusuario'];
+    protected $allowedFields    = ['placa', 'comentario', 'idUsuario'];
 
     // Activamos las fechas automáticas
     protected $useTimestamps = true;
