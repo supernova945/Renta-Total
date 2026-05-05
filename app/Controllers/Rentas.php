@@ -88,8 +88,8 @@ class Rentas extends BaseController
             'idcliente' => 'required|integer',
             'fecha_entrega' => 'required|valid_date',
             'fecha_renovacion' => 'required|valid_date',
-            'renta_sinIva' => 'required|decimal',
-            'renta_conIva' => 'required|decimal'
+            'renta_siniva' => 'required|decimal',
+            'renta_coniva' => 'required|decimal'
         ];
 
         if (!$this->validate($rules)) {
