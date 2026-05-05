@@ -270,12 +270,12 @@
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
             <div>
               <label for="modalRentaSinIva" class="block text-sm font-medium text-gray-700 mb-1">Renta sin IVA ($)</label>
-              <input type="number" step="0.01" id="modalRentaSinIva" name="renta_sinIva" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+              <input type="number" step="0.01" id="modalRentaSinIva" name="renta_siniva" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
             </div>
 
             <div>
               <label for="modalRentaConIva" class="block text-sm font-medium text-gray-700 mb-1">Renta con IVA ($)</label>
-              <input readonly type="number" step="0.01" id="modalRentaConIva" name="renta_conIva" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
+              <input readonly type="number" step="0.01" id="modalRentaConIva" name="renta_coniva" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" required>
             </div>
           </div>
 
