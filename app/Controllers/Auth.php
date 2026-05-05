@@ -60,7 +60,7 @@ class Auth extends BaseController
 
                 // Establecer datos de sesión
                 $session->set([
-                    'idUsuario'   => $user['idusuario'],
+                    'idusuario'   => $user['idusuario'],
                     'nombre'      => $user['nombre'],
                     'rol'         => $user['rol'],
                     'isLoggedIn'  => true
