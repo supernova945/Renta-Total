@@ -98,7 +98,7 @@ class RentalHistoryModel extends Model
      */
     public function getRentalHistoryByPlaca($placa)
     {
-        return $this->select('rental_history.*, cliente.Cliente as nombre_cliente, marca.marca as nombre_marca, agencia.agencia as nombre_agencia')
+        return $this->select('rental_history.*, cliente.cliente as nombre_cliente, marca.marca as nombre_marca, agencia.agencia as nombre_agencia')
                     ->join('cliente', 'cliente.idcliente = rental_history.idcliente', 'left')
                     ->join('marca', 'marca.idmarca = rental_history.idmarca', 'left')
                     ->join('agencia', 'agencia.idagencia = rental_history.idagencia', 'left')
@@ -112,7 +112,7 @@ class RentalHistoryModel extends Model
      */
     public function getAllRentalHistory()
     {
-        return $this->select('rental_history.*, cliente.Cliente as nombre_cliente, marca.marca as nombre_marca, agencia.agencia as nombre_agencia')
+        return $this->select('rental_history.*, cliente.cliente as nombre_cliente, marca.marca as nombre_marca, agencia.agencia as nombre_agencia')
                     ->join('cliente', 'cliente.idcliente = rental_history.idcliente', 'left')
                     ->join('marca', 'marca.idmarca = rental_history.idmarca', 'left')
                     ->join('agencia', 'agencia.idagencia = rental_history.idagencia', 'left')
