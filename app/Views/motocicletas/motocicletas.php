@@ -98,20 +98,18 @@
       <input type="text" list="lista_motos" id="placa_anterior" name="placa_anterior" 
              class="w-full px-3 py-2 border border-secondary/30 bg-white rounded-button focus:ring-secondary focus:outline-none" 
              placeholder="Escribe Placa o Modelo...">
-      
       <datalist id="lista_motos">
         <?php if (!empty($motocicletas)): ?>
           <?php foreach ($motocicletas as $moto): ?>
-            <?php if ($moto['nombre_estado'] === 'Leasing' || $moto['idestado'] == 3): ?>
-               <option value="<?= esc($moto['placa']) ?>">
-                <?= esc($moto['nombre_marca'] . ' ' . $moto['modelo'] . ' (' . $moto['nombre_estado'] . ')') ?>
-              </option>
-            <?php endif; ?>
+             <option value="<?= esc($moto['placa']) ?>">
+              <?= esc($moto['nombre_marca'] . ' ' . $moto['modelo'] . ' (' . $moto['nombre_estado'] . ')') ?>
+            </option>
           <?php endforeach; ?>
         <?php endif; ?>
       </datalist>
       <p class="text-xs text-gray-500 mt-1">⚠️ La moto seleccionada cambiará de estado automáticamente.</p>
     </div>
+  </div>
   
   <div>
     <label for="placa" class="block text-sm font-medium text-gray-700 mb-1">Placa (Nueva)</label>
