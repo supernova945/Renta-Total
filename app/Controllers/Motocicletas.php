@@ -308,11 +308,15 @@ if (!$this->validate($rules, $messages)) {
         'modificado_por'   => session()->get('idUsuario'),
     ];
 
-    if ($this->motocicletaModel->update($placa, $dataToUpdate)) {
+    if ($this->motocicletaModel->skipValidation(true)->update($placa, $dataToUpdate)) {
         return $this->respondUpdated(['message' => 'Actualizado con éxito']);
     }
 
-    return $this->failServerError('No se pudo actualizar.');
+    $dbError = $this->motocicletaModel->db->error();
+    $mensajeError = !empty($dbError['message']) ? $dbError['message'] : 'No se pudo actualizar.';
+    
+    return $this->failServerError('Error en BD: ' . $mensajeError);
+
 }
 
     public function delete($placa = null)
