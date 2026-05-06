@@ -259,28 +259,45 @@ if (!$this->validate($rules, $messages)) {
     }
  
     public function update($placa)
-    {
-        // Asegurarse de que la solicitud es AJAX y es un método POST
-        if (!$this->request->isAJAX() || !$this->request->is('post')) {
-            return $this->failUnauthorized('Acceso no autorizado o método no permitido.');
-        }
-
-        // Obtener los datos del cuerpo de la solicitud
-        $data = $this->request->getJSON(true); // verdadero para obtener un array asociativo
-
-        // Validar los datos recibidos)
-        if (!$this->motocicletaModel->validate($data)) {
-            return $this->failValidationErrors($this->motocicletaModel->errors());
-        }
-
-        // Intentar actualizar la motocicleta
-        if ($this->motocicletaModel->update($placa, $data)) {
-            return $this->respondUpdated(['message' => 'Motocicleta actualizada exitosamente.', 'placa' => $placa]);
-        } else {
-            // Si la actualización falla, retornar un error 500 Internal Server Error
-            return $this->failServerError('No se pudo actualizar la motocicleta. Intente de nuevo.');
-        }
+{
+    if (!$this->request->isAJAX() || !$this->request->is('post')) {
+        return $this->failUnauthorized();
     }
+
+    $data = $this->request->getJSON(true);
+
+    // Ajustamos la regla de validación dinámicamente para permitir la placa actual
+    $validation = \Config\Services::validation();
+    $rules = $this->motocicletaModel->getValidationRules();
+    
+    // Esto permite que la placa se mantenga igual sin disparar el error de "is_unique"
+    $rules['placa'] = "required|max_length[15]|is_unique[motos.placa,placa,{$placa}]";
+    $rules['chasis'] = "required|max_length[50]|is_unique[motos.chasis,placa,{$placa}]";
+
+    if (!$this->validate($rules)) {
+        return $this->fail($this->validator->getErrors(), 400);
+    }
+
+    // Aseguramos que los nombres de los campos coincidan con el modelo
+    $dataToUpdate = [
+        'idmarca'          => $data['idmarca'],
+        'modelo'           => $data['modelo'],
+        'año'              => $data['año'],
+        'Motor'            => $data['motor'], // Cambio a Mayúscula para el modelo
+        'idestado'         => $data['idestado'],
+        'idagencia'        => $data['idagencia'],
+        'chasis'           => $data['chasis'],
+        'renta_siniva'     => $data['renta_siniva'], // Todo en minúscula
+        'renta_coniva'     => $data['renta_coniva'], // Todo en minúscula
+        'modificado_por'   => session()->get('idUsuario'),
+    ];
+
+    if ($this->motocicletaModel->update($placa, $dataToUpdate)) {
+        return $this->respondUpdated(['message' => 'Actualizado con éxito']);
+    }
+
+    return $this->failServerError('No se pudo actualizar.');
+}
 
     public function delete($placa = null)
     {

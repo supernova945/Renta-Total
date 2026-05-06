@@ -27,7 +27,7 @@ class MotocicletaModel extends Model
         'idestado',
         'idcliente',     
         'chasis',
-        'Motor',         
+        'motor',         
         'idmarca',       
         'año',           
         'modelo',
