@@ -101,9 +101,11 @@
       <datalist id="lista_motos">
         <?php if (!empty($motocicletas)): ?>
           <?php foreach ($motocicletas as $moto): ?>
+            <?php if ($moto['nombre_estado'] === 'Leasing' || $moto['idestado'] == 3): ?>
              <option value="<?= esc($moto['placa']) ?>">
               <?= esc($moto['nombre_marca'] . ' ' . $moto['modelo'] . ' (' . $moto['nombre_estado'] . ')') ?>
             </option>
+            <?php endif; ?>
           <?php endforeach; ?>
         <?php endif; ?>
       </datalist>
