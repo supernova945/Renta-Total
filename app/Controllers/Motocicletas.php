@@ -88,7 +88,7 @@ class Motocicletas extends BaseController
             'motivo_ingreso' => 'required|in_list[NUEVO,RENOVACION,REPOSICION]'
         ];
         $messages = [
-    'placa' => [    
+    'placa' => [
         'is_unique' => '❌ La Placa ingresada ya está registrada en el sistema.'
     ],
     'chasis' => [
@@ -197,7 +197,7 @@ if (!$this->validate($rules, $messages)) {
                 // Si algo falló internamente en la DB durante la transacción
                 return $this->failServerError('Error en la transacción de base de datos.');
             }
-            $this->procesarSalidaFlota($data['placa_anterior']);
+
             return $this->respondCreated([
                 'message' => 'Motocicleta agregada exitosamente.',
                 // Retornamos la placa como ID ya que no es autoincrementable
@@ -304,17 +304,12 @@ if (!$this->validate($rules, $messages)) {
         'taller'           => $data['taller'] ?? null,
         'iddepartamento'   => $data['iddepartamento'] ?? null,
         'naf'              => $data['naf'] ?? null,
-        'motivo_ingreso'   => $data['motivo_ingreso'] ?? 'NUEVO',
-        'placa_anterior'   => $data['placa_anterior'] ?? null,
+        
         'modificado_por'   => session()->get('idUsuario'),
     ];
 
     if ($this->motocicletaModel->skipValidation(true)->update($placa, $dataToUpdate)) {
-        if (!empty($dataToUpdate['placa_anterior'])) {
-            $this->procesarSalidaFlota($dataToUpdate['placa_anterior']);
-        }
         return $this->respondUpdated(['message' => 'Actualizado con éxito']);
-        
     }
 
     $dbError = $this->motocicletaModel->db->error();
@@ -454,55 +449,5 @@ if (!$this->validate($rules, $messages)) {
             return $this->fail('Error del servidor: ' . $e->getMessage(), 500);
         }
     }   
-    /**
-     * Procesa la salida de la flota de la moto anterior:
-     * La envía al historial (rental_history) y le cambia el estado a Venta Usada.
-     */
-    private function procesarSalidaFlota($placaAnterior)
-    {
-        if (empty($placaAnterior)) return;
-
-        // Buscamos los datos de la moto que va a salir
-        $motoAnterior = $this->motocicletaModel->find($placaAnterior);
-
-        // Validamos que exista y que actualmente tenga un cliente asignado (para no dar error en rental_history)
-        if ($motoAnterior && !empty($motoAnterior['idcliente'])) {
-            $db = \Config\Database::connect();
-            
-            // 1. Preparamos el historial con los datos que tenía la moto
-            $historyData = [
-                'placa'              => $motoAnterior['placa'],
-                'idcliente'          => $motoAnterior['idcliente'],
-                // Si por algún motivo no tenía fecha de entrega, ponemos la actual por defecto
-                'fecha_entrega'      => !empty($motoAnterior['fecha_entrega']) ? $motoAnterior['fecha_entrega'] : date('Y-m-d'),
-                'fecha_renovacion'   => !empty($motoAnterior['fecha_renovacion']) ? $motoAnterior['fecha_renovacion'] : null,
-                'renta_sinIva'       => $motoAnterior['renta_siniva'] ?? null,
-                'renta_conIva'       => $motoAnterior['renta_coniva'] ?? null,
-                'naf'                => $motoAnterior['naf'] ?? null,
-                'fecha_finalizacion' => date('Y-m-d H:i:s'),
-                'finalizado_por'     => session()->get('idUsuario'),
-                'idmarca'            => $motoAnterior['idmarca'],
-                'modelo'             => $motoAnterior['modelo'],
-                'año'                => $motoAnterior['año'],
-                'idagencia'          => $motoAnterior['idagencia'] ?? null
-            ];
-            
-            // Insertamos directamente usando el Query Builder
-            $db->table('rental_history')->insert($historyData);
-
-            // 2. Actualizamos la moto vieja a "Venta de moto usada"
-            // OJO: Cambia este '4' por el ID real de tu estado "Venta de moto usada" en tu tabla "estado"
-            $idEstadoVentaUsada = 4; 
-            
-            $updateData = [
-                'idestado'       => $idEstadoVentaUsada,
-                'idcliente'      => null, // La desvinculamos del cliente actual
-                'modificado_por' => session()->get('idUsuario')
-            ];
-
-            // Forzamos saltar validación para evitar conflictos de unique en la actualización
-            $this->motocicletaModel->skipValidation(true)->update($placaAnterior, $updateData);
-        }
-    }
 
 }
