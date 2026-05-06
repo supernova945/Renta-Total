@@ -1122,7 +1122,7 @@ const resetAddModalState = () => {
 
         // Obtiene los valores de los campos del formulario de edición
         const data = {
-            
+            placa: placaToUpdate,
             idmarca: this.editMarca.value,
             modelo: this.editModelo.value,
             año: this.editAnio.value,

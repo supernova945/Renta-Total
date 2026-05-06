@@ -266,29 +266,45 @@ if (!$this->validate($rules, $messages)) {
 
     $data = $this->request->getJSON(true);
 
-    // Ajustamos la regla de validación dinámicamente para permitir la placa actual
+    // 1. Obtener reglas
     $validation = \Config\Services::validation();
     $rules = $this->motocicletaModel->getValidationRules();
     
-    // Esto permite que la placa se mantenga igual sin disparar el error de "is_unique"
-    $rules['placa'] = "required|max_length[15]|is_unique[motos.placa,placa,{$placa}]";
+    // 2. Adaptar reglas para ignorar el ID actual en campos unique
+    $rules['placa']  = "required|max_length[15]|is_unique[motos.placa,placa,{$placa}]";
     $rules['chasis'] = "required|max_length[50]|is_unique[motos.chasis,placa,{$placa}]";
 
+    // ¡CLAVE!: Quitamos la regla 'creado_por' ya que en una actualización no la enviamos
+    unset($rules['creado_por']);
+
+    // 3. Ejecutar validación
     if (!$this->validate($rules)) {
+        // Enviar el array de errores exactos de vuelta para debugging
         return $this->fail($this->validator->getErrors(), 400);
     }
 
-    // Aseguramos que los nombres de los campos coincidan con el modelo
+    // 4. Mapear TODOS los datos (asegurándonos de usar minúsculas donde el Modelo lo exija, como 'motor')
     $dataToUpdate = [
         'idmarca'          => $data['idmarca'],
         'modelo'           => $data['modelo'],
         'año'              => $data['año'],
-        'Motor'            => $data['motor'], // Cambio a Mayúscula para el modelo
+        'motor'            => $data['motor'], // De vuelta a minúscula según tu MotocicletaModel.php
         'idestado'         => $data['idestado'],
         'idagencia'        => $data['idagencia'],
         'chasis'           => $data['chasis'],
-        'renta_siniva'     => $data['renta_siniva'], // Todo en minúscula
-        'renta_coniva'     => $data['renta_coniva'], // Todo en minúscula
+        'renta_siniva'     => $data['renta_siniva'],
+        'renta_coniva'     => $data['renta_coniva'],
+        
+        // ¡Importante! Mapear los campos extras que no se estaban guardando
+        'idcliente'        => $data['idcliente'] ?? null,
+        'color'            => $data['color'] ?? null,
+        'fecha_entrega'    => $data['fecha_entrega'] ?? null,
+        'fecha_renovacion' => $data['fecha_renovacion'] ?? null,
+        'envio'            => $data['envio'] ?? null,
+        'taller'           => $data['taller'] ?? null,
+        'iddepartamento'   => $data['iddepartamento'] ?? null,
+        'naf'              => $data['naf'] ?? null,
+        
         'modificado_por'   => session()->get('idUsuario'),
     ];
 
